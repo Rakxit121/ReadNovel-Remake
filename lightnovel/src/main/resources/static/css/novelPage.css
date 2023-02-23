@@ -1,0 +1,166 @@
+/* Global styles */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.novel_main{
+    /*margin-top: 5%;*/
+    /*margin-bottom: 5%;*/
+    margin: 8%;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #6c5ce7;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Title styles */
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Card styles */
+.card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.card-rating {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-author,
+.card-genre,
+.card-type,
+.card-status {
+    margin-bottom: 10px;
+}
+
+.card-author label,
+.card-genre label,
+.card-type label,
+.card-status label {
+    font-weight: bold;
+}
+
+.card-tag {
+    margin-bottom: 10px;
+}
+
+.card-tag label {
+    background-color: #6c5ce7;
+    border-radius: 20px;
+    color: #fff;
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+.bookmark {
+    background-color: #fff;
+    border: 2px solid #6c5ce7;
+    border-radius: 20px;
+    color: #6c5ce7;
+    display: inline-block;
+    font-size: 1rem;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.bookmark:hover {
+    background-color: #6c5ce7;
+    color: #fff;
+}
+
+/* Media queries */
+@media screen and (max-width: 767px) {
+    header {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-rating {
+        font-size: 0.875rem;
+    }
+
+    .bookmark {
+        font-size: 0.875rem;
+    }
+}
+
+.description {
+    background-color: #6b3fa0;
+    color: white;
+    padding: 50px 0;
+}
+
+.description h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.description p {
+    font-size: 24px;
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container-fluid {
+        max-width: 800px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .container-fluid {
+        max-width: 1000px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container-fluid {
+        max-width: 1200px;
+    }
+}

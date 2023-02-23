@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <div class="novel-list">
+            <div th:each="novel : ${novels}">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img th:src="${novel.image}" class="img-thumbnail" alt="Novel Image">
+                    </div>
+                    <div class="col-md-9">
+                        <h3 th:text="${novel.title}"></h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="read-more">
+                            <button class="btn btn-primary">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ads">
+            <h2>Advertisements</h2>
+        </div>
+
+
+        <footer th:replace="fragment/footer_frag.html :: footer"></footer>
+
+
+</body>
+</html>

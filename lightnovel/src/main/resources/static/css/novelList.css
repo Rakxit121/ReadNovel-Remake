@@ -1,0 +1,49 @@
+.novel-list {
+    padding: 20px;
+}
+
+.novel-list .row {
+    margin-bottom: 20px;
+}
+
+.novel-list .img-thumbnail {
+    width: 150px;
+    height: 200px;
+}
+
+.novel-list .stars {
+    display: flex;
+    align-items: center;
+}
+
+.novel-list .stars i {
+    color: #ffc107;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.novel-list .read-more {
+    text-align: right;
+}
+
+.novel-list .read-more button {
+    color: #ffffff;
+    background-color: #6c757d;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.novel-list .read-more button:hover {
+    background-color: #8e44ad;
+}
+.ads {
+    background-color: #f2f2f2;
+    float: right;
+    padding: 20px;
+}
+
+.ads h2 {
+    text-align: center;
+    color: #333333;
+}

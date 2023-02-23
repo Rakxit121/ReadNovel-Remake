@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ReadNovel Home</title>
+        <link rel="stylesheet" th:href="@{~/css/footer.css}">
+        <link rel="stylesheet" th:href="@{~/css/header.css}">
+        <link rel="stylesheet" th:href="@{~/css/mainpage.css}">
+
+        <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css}">
+
+    </head>
+    <body>
+
+        <header th:replace="fragment/header_frag.html :: header"></header>
+
+        <main>
+
+<!--            <div class="card-deck">-->
+<!--                <div th:each="pageData : ${pageDatas}" class="card novel-card">-->
+<!--                    <img th:src="${pageData.image}" class="card-img-left" alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title" th:text="${pageData.title}"></h5>-->
+<!--                        <p class="card-text">-->
+<!--                            <span th:each="i : ${#numbers.sequence(1, pageData.rating)}" class="fa fa-star checked"></span>-->
+<!--                            <span th:each="i : ${#numbers.sequence(pageData.rating + 1, 5)}" class="fa fa-star"></span>-->
+<!--                        </p>-->
+<!--                        <a th:href="${pageData.link}" class="btn btn-primary">Read More</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+            <div class="row">
+                <div class="col card novel-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Sample Novel Title</h5>
+                        <p class="card-text">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col card novel-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Another Sample Novel Title</h5>
+                        <p class="card-text">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+                <hr style="background-color: #4e5561">
+            </div>
+
+            <div class="row">
+                <div class="col card novel-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Sample Novel Title</h5>
+                        <p class="card-text">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col card novel-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Another Sample Novel Title</h5>
+                        <p class="card-text">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--            <div class="container">-->
+<!--              <h1 >Latest Releases</h1>-->
+<!--              <h1 th:text="#{latestReleases}">Latest Releases</h1>-->
+<!--              <div class="novel-list">-->
+<!--                <div class="novel" th:each="novel : ${latestNovels}">-->
+<!--                  <img th:src="@{/img/novels/} + ${novel.coverImage}" alt="Novel Cover">-->
+<!--                  <h2 th:text="${novel.title}">Novel Title</h2>-->
+<!--                  <p th:text="${novel.author}">Author</p>-->
+<!--                  <a th:href="@{/novel/} + ${novel.id}" th:text="#{read}" class="read-button">Read</a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+<!--            <div class="row">-->
+<!--                <hr>-->
+<!--                <div th:each="novel : ${novels}">-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="novel-card">-->
+<!--                            <img th:src="${novel.image}" class="novel-image" alt="Novel Image">-->
+<!--                            <h3>-->
+<!--                                <a th:href="${novel.link}" th:text="${novel.title}"></a>-->
+<!--                            </h3>-->
+<!--                            <div class="novel-review">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star-half-alt"></i>-->
+<!--                            </div>-->
+<!--                            <div class="novel-read-more">-->
+<!--                                <a th:href="${novel.link}" class="btn btn-primary">Read More</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <hr style="background-color: #4e5561; height: 100%">
+            <div class="ads">
+                <h2>Advertisements</h2>
+            </div>
+        </main>
+
+
+
+        <footer th:replace="fragment/footer_frag.html :: footer"></footer>
+
+    </body>
+</html>
+
+

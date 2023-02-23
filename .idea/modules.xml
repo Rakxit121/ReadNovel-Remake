@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Remake Individual.iml" filepath="$PROJECT_DIR$/.idea/Remake Individual.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lightnovel/lightnovel.iml" filepath="$PROJECT_DIR$/lightnovel/lightnovel.iml" />
+    </modules>
+  </component>
+</project>

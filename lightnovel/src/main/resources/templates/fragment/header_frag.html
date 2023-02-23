@@ -1,0 +1,30 @@
+<div class="header" th:fragment="header">
+    <div class="top-header">
+<!--      <img th:src="@{~/images/logo.png}" class="logo" alt="Logo">-->
+      <img th:src="@{~/images/logo.png}" class="logo" alt="Logo">
+      <form class="search-form">
+<!--          <label>-->
+              <input type="text" placeholder="Search...">
+<!--          </label>-->
+          <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div class="profile-pic-container">
+        <img  class="profile-pic" alt="Profile Picture" th:src="@{~/images/logo.png}">
+
+<!--              <button class="dropbtn">Dropdown</button>-->
+              <div class="dropdown-content">
+                  <a th:href="@{~/homepage/user_profile}" >Profile</a>
+                  <a th:href="@{/logout}">Logout</a>
+              </div>
+      </div>
+    </div>
+    <div class="bottom-header">
+      <a th:href="@{~/homepage/home}" >Home</a>
+      <a th:href="@{/bookmarkPage}">Bookmark</a>
+
+      <a th:href="@{/homepage#about}"  target="_blank">About Us</a>
+    </div>
+</div>
+  

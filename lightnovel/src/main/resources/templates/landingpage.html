@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landing Page</title>
+    <link rel="stylesheet" th:href="@{~/css/landingpage.css}">
+    <link rel="stylesheet" th:href="@{~/css/footer.css}">
+    <link rel="stylesheet" th:href="@{~/css/header.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css}">
+
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  </head>
+  <body>
+  <nav class="container-fluid nav">
+    <div class="brand">
+<!--      <a href="#splash">ReadNovel</a>-->
+      <img th:src="@{~/images/logo.png}" class="logo" alt="Logo">
+    </div>
+    <style>
+      @media(max-width: 800px){
+        .cf{
+          display: none;
+        }
+      }
+    </style>
+    <div class="container cf" >
+
+      <i class="fa fa-bars nav-toggle"></i>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#Intro" class="nav-link w-nav-link">Intro</a></li>
+        <li><a href="#Features" class="nav-link w-nav-link">Features</a></li>
+        <li><a href="#Testimonials" class="nav-link w-nav-link">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+       <div class="w-layout-grid nav-buttons">
+           <a th:href="@{~/homepage/register}"  class="button small ghost-bg w-button" >Sign up</a>
+      <!--              on click open the login -->
+           <a onclick="document.getElementById('id01').style.display='block'"  th:href="@{~/login}"  class="button small white w-button">Login</a>
+
+       </div>
+    </div>
+
+  </nav>
+
+  <div class="container-fluid splash" id="splash">
+    <div class="container">
+      <h1>ReadNovel</h1>
+      <span class="lead">Know More</span>
+      <span class="continue"><a href="#about"><i class="fa fa-angle-down"></i></a></span>
+    </div>
+  </div>
+
+  <div class="container-fluid features" id="features">
+    <div class="container cf" style="display: contents;">
+      <h2>Our Features</h2>
+      <div class="col-3">
+        <img src="https://s22.postimg.org/oi5es3fkx/icon_cloud.png" alt="">
+        <h3>Free to Read</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi maiores eum commodi soluta, blanditiis voluptates ea eos, cim! Neque.</p>
+      </div>
+      <div class="col-3">
+        <img src="https://s22.postimg.org/jxj8d5vvl/icon_coding.png" alt="">
+        <h3>Splendid Translation</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi maiores eum commodi soluta, blanditiis voluptates ea eos, cim! Neque.</p>
+      </div>
+      <div class="col-3">
+        <img src="https://s22.postimg.org/citwksa01/icon_graph.png" alt="">
+        <h3>Immersive</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi maiores eum commodi soluta, blanditiis voluptates ea eos, cim! Neque.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid portfolio" id="portfolio">
+    <div class="container cf" style="display: contents;">
+      <h2>Some Popular Novels</h2>
+      <div class="gallery">
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=250" alt=""></a></div>
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=249" alt=""></a></div>
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=248" alt=""></a></div>
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=247" alt=""></a></div>
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=239" alt=""></a></div>
+        <div class="gallery-image"><a href="#"><img src="https://unsplash.it/800/450?image=238" alt=""></a></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid intro" id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias ratione impedit soluta amet quas saepe temporibus <a href="#">eum reprehenderit</a> voluptas! A nihil adipisci itaque quos quo dolorum consequuntur iusto facere quaerat, excepturi quod, necessitatibus aliquid quae est qui, aut in assumenda animi tempora debitis. Beatae, veritatis, delectus. Repellat dolore, molestias nam.</p>
+    </div>
+  </div>
+
+
+  <div class="container-fluid contact" id="contact">
+    <div class="container">
+      <form th:method="post" th:action="@{/user/savefeedback}" th:object="${feedback}">
+        <h2>Contact Us</h2>
+        <input type="email" placeholder="Email"  class="full-half" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required th:field="*{email}" th:value="${feedback.email}">
+        <input type="text" placeholder="Name"   class="full-half" required th:field="*{fullname}" th:value="${feedback.fullname}">
+        <input type="text" placeholder="Subject"  required th:field="*{subject}" th:value="${feedback.subject}">
+        <textarea placeholder="Message"  required th:field="*{message}" th:value="${feedback.message}"></textarea>
+
+        <!--              <input type="text" placeholder="Name" id="name" name="name" class="full-half" required >-->
+        <!--              <input type="email" placeholder="Email" id="email" name="email" class="full-half" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >-->
+        <!--              <input type="text" placeholder="Subject" id="subject" name="subject"  required >-->
+        <!--              <textarea placeholder="Message" id="message" name="message" required></textarea>-->
+        <input type="submit" onclick="allert()" value="Send">
+      </form>
+    </div>
+  </div>
+
+  <div class="container-fluid review">
+    <div class="text-topic">
+      <span>REVIEWS</span>
+    </div>
+    <div class="box">
+      <div class="img-container">
+        <img th:src="@{~/images/home-images/rabi.jpg}">
+      </div>
+      <h2>Joe Wilson</h2>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <p>"Love it. "</p>
+    </div>
+
+    <div class="box">
+      <div class="img-container">
+        <img th:src="@{~/images/home-images/rabi.jpg}">
+      </div>
+      <h2>Joe Wilson</h2>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <p>"Love it. "</p>
+    </div>
+  </div>
+
+  <script>
+    function allert(){
+      alert("Successfully Submitted")
+    }
+  </script>
+
+
+  <footer th:replace="fragment/footer_frag.html :: footer"></footer>
+
+
+  </body>
+</html>
+
+
+
+

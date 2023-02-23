@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Error</title>
+  <style>
+    /* Add styles for the page */
+    body {
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .main-box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .error-message {
+      font-size: 100px;
+      color: #000000;
+      text-shadow: -1px -1px 0 #8400ff, 1px 1px 0 #ff005a;
+      margin-bottom: 20px;
+    }
+
+    .error-description {
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 50px;
+    }
+
+    .animation-picture {
+      width: 200px;
+      height: 200px;
+      animation: move 7s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateX(-100%);
+      }
+      50% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    a.home-button {
+      background-color: black;
+      color: #8400ff;
+      text-shadow: -1px -1px 0 #8400ff, 1px 1px 0 #ff005a;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+
+    }
+
+    a.home-button:hover {
+      background-color: #ff005a;
+      color: black;
+      text-shadow: -1px -1px 0 black, 1px 1px 0 #8400ff;
+
+    }
+  /*  circle around the div */
+
+  </style>
+</head>
+<body>
+<div class="main-box">
+  <p class="error-message">404 ERROR</p>
+  <p class="error-description">The page you are looking for could not be found.</p>
+  <img th:src="@{~/images/ufo_ast.png}" class="animation-picture" alt="3D animation picture">
+  <a th:href="@{~/homepage}" class="home-button">Go Home</a>
+</div>
+</body>
+</html>

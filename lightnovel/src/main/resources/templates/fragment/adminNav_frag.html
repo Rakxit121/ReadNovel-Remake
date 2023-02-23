@@ -1,0 +1,27 @@
+
+<nav class="admin__menu" th:fragment="adminNav">
+    <ul class="menu">
+        <li class="menu__item">
+            <a class="menu__link" th:href="@{~/admin}">Dashboard</a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" th:href="@{~/admin/novelList}">Novel List</a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" href="#">Customer list</a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" th:href="@{~/admin/userComments}">Comment List</a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" href="#">Profile</a>
+        </li>
+        <!-- <li class="menu__item">
+            <a class="menu__link" href="#"></a>
+        </li> -->
+        <li class="menu__item">
+            <a class="menu__link" href="#">Settings</a>
+        </li>
+    </ul>
+</nav>
+

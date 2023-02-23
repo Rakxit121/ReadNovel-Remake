@@ -1,0 +1,292 @@
+
+<!Doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Novel List form</title>
+  </head>
+  <style>
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 70%;
+      height: 80%;
+      margin: 8% auto;
+      border: 1px solid #8d8585;
+      border-radius: 10px;
+      padding: 20px;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .form-group label {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    #image-preview-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    #image-preview {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      border: 1px solid #8d8585;
+      border-radius: 5px;
+    }
+
+    #title,
+    #author,
+    #genre,
+    #status,
+    #rating,
+    #chapters,
+    #synopsis {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 18px;
+    }
+
+    #title::placeholder,
+    #author::placeholder,
+    #genre::placeholder,
+    #status::placeholder,
+    #rating::placeholder,
+    #chapters::placeholder,
+    #synopsis::placeholder {
+      color: #8d8585;
+    }
+
+    #submit-btn {
+      background-color: #8400ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #submit-btn:hover {
+      background-color: #ff005a;
+    }
+
+    #submit-btn {
+      background-color: #8400ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #submit-btn:hover {
+      background-color: #ff005a;
+    }
+
+    #cancel-btn {
+      background-color: #e6e6e6;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    #cancel-btn:hover {
+      background-color: #ccc;
+    }
+
+
+
+  </style>
+
+  <div class="form-container">
+    <form>
+      <div id="image-preview-container" class="form-group">
+        <img id="image-preview" src="#" alt="Image Preview">
+      </div>
+      <input type="file" id="image" name="image" style="display:none;">
+      <button type="button" onclick="document.getElementById('image').click()">Upload Image</button>
+
+      <div class="form-group">
+        <input type="text" id="title" name="title" placeholder="Title" required>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="author" name="author" placeholder="Author" required>
+      </div>
+
+      <div class="form-group">
+        <select id="genre" name="genre" placeholder="Genre" required>
+          <option value="">Select a genre</option>
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Drama">Drama</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Horror">Horror</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Romance">Romance</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+          <option value="">Select a status</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <!-- <label for="pdf">PDF:</label>
+        <input type="file" id="pdf" name="pdf"> -->
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+        <label for="chapters">Chapters:</label>
+        <input type="number" id="chapters" name="chapters" min="1" required>
+
+        <label for="synopsis">Synopsis:</label>
+        <textarea id="synopsis" name="synopsis" rows="5" required></textarea>
+
+        <div class="button-container">
+          <input type="submit" value="Submit">
+          <button type="button" onclick="clearForm()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+    <!--      <button type="submit" onclick="allert()" id="submit-btn">Submit</button>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--  <div id="response-container"></div>-->
+
+  <script>
+    function clearForm() {
+      document.getElementById("title").value = "";
+      document.getElementById("author").value = "";
+      document.getElementById("genre").selectedIndex = 0;
+      document.getElementById("status").selectedIndex = 0;
+      document.getElementById("rating").value = "";
+      document.getElementById("chapters").value = "";
+      document.getElementById("synopsis").value = "";
+      document.getElementById("image-preview").innerHTML = '<img src="#" alt="Image Preview">';
+    }
+
+    document.getElementById("image").addEventListener("change", function() {
+      const preview = document.getElementById("image-preview").firstElementChild;
+      const file = document.getElementById("image").files[0];
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function() {
+        preview.src = reader.result;
+      }, false);
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }, false);
+  </script>
+  </body>
+</html>
+
+  <script>
+    function displayImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('image-preview').src = e.target.result;
+          document.getElementById('image-preview').style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", function(event) {
+      event.preventDefault();
+      var link = document.getElementById("link-input").value;
+      fetch("/api/page-data?link=" + link)
+              .then(response => response.json())
+              .then(data => {
+                // Store the data in the database here
+                console.log("Data stored in database:", data);
+              })
+              .catch(error => {
+                console.error("Error storing data in database:", error);
+              });
+    });
+  </script>
+
+  <script>
+    document.getElementById("web-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get the link and image data from the form
+      var link = document.getElementById("link-input").value;
+      var imageFile = document.getElementById("image-upload").files[0];
+
+      // Create a FormData object to send the data to the API endpoint
+      var formData = new FormData();
+      formData.append("link", link);
+      formData.append("image", imageFile);
+
+      // Use the fetch API to send the data to the API endpoint
+      fetch("/api/page-data", {
+        method: "POST",
+        body: formData
+      })
+              .then(response => response.json())
+              .then(data => {
+                // Store the data in the database here
+                console.log("Data stored in database:", data);
+              })
+              .catch(error => {
+                console.error("Error storing data in database:", error);
+              });
+    });
+  </script>
+  <script>
+    function allert(){
+      alert("API run sucessful")
+    }
+  </script>
+</body>
+</html>
+
+

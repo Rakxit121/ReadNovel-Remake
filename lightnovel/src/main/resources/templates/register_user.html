@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Registration page</title>
+        <link rel="stylesheet" th:href="@{~/css/register.css}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+
+                <div class="row">
+                    <div class="col-md-5 register-left">
+                        <i class="fa fa-arrow-circle-o-down fa-3x" aria-hidden="true"></i>
+
+                        <h3>Join Us</h3>
+                        <p class="lead">Welcome To ReadNovel</p>
+<!--                        <button class="btn btn-primary" th:href="@{/homepage#about}">About Us </button>-->
+                        <a class="btn btn-primary" th:href="@{/homepage}">About Us </a>
+                    </div>
+                    <div class="col-md-7 register-right">
+                        <h2>Register Here </h2>
+                        <form th:method="post" th:action="@{/user/save}" th:object="${user}">
+                        <div class="register-form" >
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" required name="fullname">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username"  required name="username">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" required name="password">
+                            </div>
+                            <button class="btn btn-primary" type="submit">
+                                Register
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

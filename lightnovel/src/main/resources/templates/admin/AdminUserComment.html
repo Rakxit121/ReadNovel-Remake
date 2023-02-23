@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>User Comments List</title>
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminNav.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminFooter.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminHeader.css}">
+        <link rel="stylesheet" th:href="@{~/css/Feedback.css}">
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body style="margin: 0px">
+
+    <header th:replace="fragment/adminHeader.html :: adminHeader" style="display: flex"></header>
+
+    <main class="admin_main" style="display: flex">
+        <div class="admin__sidebar">
+            <div th:replace="fragment/adminNav_frag.html :: adminNav"></div>
+        </div>
+            <div class="Main-wrapper" >
+                <div class="wrapper-top">
+                    <h2>Feedback</h2>
+                </div>
+
+                <div style="overflow-x:auto;"></div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Contact_Id</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                        <!--            <th>Action</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contact:${feedback}">
+                        <td th:text="${contact.id}"></td>
+                        <td th:text="${contact.fullname}"></td>
+                        <td th:text="${contact.email}"></td>
+                        <td th:text="${contact.subject}"></td>
+                        <td th:text="${contact.message}"></td>
+                        <td> <a class="contact_button" th:href="@{~/admin/deletefeed/}+${contact.id}" >delete</a></td>
+                        <!--            <td> <a class="edit" th:href="@{~/admin/edit/}+${booking.id}" >edit</a></td>-->
+
+                    </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+    </main>
+    <footer th:replace="fragment/adminFooter_frag.html :: adminFooter"></footer>
+
+
+    </body>
+</html>

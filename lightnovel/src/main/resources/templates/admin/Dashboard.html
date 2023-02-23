@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Admin main Dashboard</title>
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminNav.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminFooter.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminHeader.css}">
+        <link rel="stylesheet" th:href="@{~/css/adminDashboard.css}">
+    </head>
+
+    <body style="margin: 0px">
+        <header th:replace="fragment/adminHeader.html :: adminHeader"></header>
+
+        <main class="admin_main">
+            <div class="admin__sidebar">
+                <div th:replace="fragment/adminNav_frag.html :: adminNav"></div>
+            </div>
+
+            <div class="admin__main-content">
+                    <h1>Welcome to the Admin Dashboard!</h1>
+                    <p>This is the main area where you can manage your website's content and settings.</p>
+
+            </div>
+        </main>
+
+        <footer th:replace="fragment/adminFooter_frag.html :: adminFooter"></footer>
+
+    </body>
+    </html>

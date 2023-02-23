@@ -1,0 +1,38 @@
+/* Header */
+.admin__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 20px;
+    background-color: #1c2231;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin__header .logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.admin__header .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.admin__header .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.admin__header .user a {
+    color: #fff;
+}
+
+.admin__header .user a:hover {
+    text-decoration: none;
+}

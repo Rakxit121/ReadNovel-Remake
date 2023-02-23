@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin BookList</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="Main-wrapper">
+    <div class="wrapper-top">
+        <h2>booklists</h2>
+        <div class="search-icon">
+            <input type="text" placeholder="Search by name" name="search">
+            <button type="submit" class ="btn4"><i class="fa fa-search"></i></button>
+        </div>
+        <button class="btn1"><a th:href="@{/admin/newbooklist}">+ New booklists</a></button>
+
+    </div>
+
+    <div style="overflow-x:auto;"></div>
+    <table>
+        <thead>
+        <tr>
+            <th>Cust_Id</th>
+            <th>Full Name</th>
+            <th>Room</th>
+            <th>Date</th>
+            <th>Checkin_date</th>
+            <th>Checkout_date</th>
+            <th>Total_payment</th>
+            <th>Phone-number</th>
+            <th>Number</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booklist:${booklistlist}">
+            <td th:text="${booklist.id}"></td>
+            <td th:text="${booklist.fullname}"></td>
+            <td th:text="${booklist.rooms}"></td>
+            <td th:text="${booklist.date}"></td>
+            <td th:text="${booklist.checkin}"></td>
+            <td th:text="${booklist.checkout}"></td>
+            <td th:text="${booklist.total}"></td>
+            <td th:text="${booklist.mobileNo}"></td>
+            <td th:text="${booklist.number_of_people}"></td>
+            <!--                    <td> <a class="edit" href="#" >Active</a></td>-->
+            <!--                    <td> <a class="edit" href="#" >delete</a></td>-->
+            <!--                    <td> <a class="edit" href="#" >edit</a></td>-->
+            <td> <a class="edit" th:href="@{~/admin/delete/}+${booklist.id}" >delete</a></td>
+            <td> <a class="edit" th:href="@{~/admin/edit/}+${booklist.id}" >edit</a></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+
+
+</div>
+
+
+</body>
+</html>

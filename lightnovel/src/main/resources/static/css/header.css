@@ -1,0 +1,170 @@
+.header {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  .logo {
+    width: 150px;
+    /*height: 50px;*/
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 40%;
+
+  }
+  
+  .search-form input {
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .search-button:hover {
+    background-color: #ddd;
+  }
+  
+  .fa-search {
+    margin-right: 10px;
+  }
+
+.profile-pic-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.profile-pic-container:hover .dropdown-content {display: block;}
+
+.profile-pic-container:hover .dropbtn {background-color: #3e8e41;}
+  .profile-pic-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding:12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+    
+    .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    }
+    
+    .profile-pic-container:hover .dropdown-content {
+    display: block;
+    }
+    
+    .bottom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #333;
+    color: #fff;
+    }
+    
+    .bottom-header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 16px;
+    }
+    
+    .bottom-header a:hover {
+    color: #ddd;
+    }
+    @media (max-width: 600px) {
+        .logo {
+          width: 100px;
+          height: 40px;
+        }
+      
+        .search-form {
+          flex-wrap: wrap;
+          width: 100%;
+        }
+      
+        .search-form input {
+          width: 100%;
+          margin-bottom: 8px;
+        }
+      
+        .search-button {
+          width: 100%;
+          margin-bottom: 8px;
+        }
+      
+        .profile-pic {
+          width: 30px;
+          height: 30px;
+        }
+      
+        .bottom-header {
+          flex-wrap: wrap;
+          justify-content: space-around;
+        }
+      
+        .bottom-header a {
+          margin: 8px 0;
+          width: 100%;
+        }
+      }
+      

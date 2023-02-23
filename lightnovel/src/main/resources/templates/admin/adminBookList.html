@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Admin Novel List</title>
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminNav.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminFooter.css}">
+        <link rel="stylesheet" th:href="@{~/css/fragement/adminHeader.css}">
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+<!--        <div class="admin">-->
+
+
+            <header th:replace="fragment/adminHeader.html :: adminHeader"></header>
+            <main class="admin_main">
+                <div class="admin__sidebar">
+                    <div th:replace="fragment/adminNav_frag.html :: adminNav"></div>
+                </div>
+
+
+
+            <div class="wrapper-top" style="flex-direction: column;
+            width: 100%; margin: 8px; padding: 16px;">
+                <h2>Novels</h2>
+                <button class="btn1"><a th:href="@{/admin/novelForm}">+ New Novels</a></button>
+
+                <!--<div style="overflow: scroll">-->
+                <table id="table_id" >
+                    <thead>
+                    <tr>
+                        <th>Novel_Id</th>
+<!--                        <th>Images</th>-->
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Status</th>
+<!--                        <th>PDF</th>-->
+                        <th>Rating</th>
+                        <th>Chapters</th>
+                        <th>Synopsis</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                                    <tr th:each="books:${novel}">
+                                        <td th:text="${books.id}"></td>
+                                        <td th:text="${books.title}"></td>
+                                        <td th:text="${books.author}"></td>
+                                        <td th:text="${books.genre}"></td>
+                                        <td th:text="${books.status}"></td>
+                                        <td th:text="${books.rating}"></td>
+                                        <td th:text="${books.latestChapter}"></td>
+                                        <td th:text="${books.description}"></td>
+
+                                        <td> <a class="delete_button" th:href="@{~/admin/delete/}+${books.id}" >delete</a></td>
+<!--                                        <td> <a class="edit_button" th:href="@{~/admin/edit/}+${books.id}" >edit</a></td>-->
+                                    </tr>
+                                    </tbody>
+                </table>
+                <!--</div>-->
+                <script
+                        type="text/javascript"
+                        charset="utf8"
+                        src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+                ></script>
+                <script
+                        type="text/javascript"
+                        charset="utf8"
+                        src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+                    document.getElementsByClassName()
+                </script>
+                <script >
+                    $(function() {
+                        $("#table_id").dataTable();
+                    });
+                </script>
+
+
+            </div>
+        </main>
+
+
+
+
+            <footer th:replace="fragment/adminFooter_frag.html :: adminFooter"></footer>
+
+<!--        </div>-->
+    </body>
+</html>

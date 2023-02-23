@@ -1,0 +1,91 @@
+body {
+    background-image:linear-gradient(to right,#c03cff, #6d00dc);
+    margin-top:150px !important ;
+    color:#fff;
+}
+.register-left{
+    text-align:center;
+    color:#fff;
+    padding: 30px;
+}
+.register-left p {
+    padding: 20px 20px 0;
+}
+.register-left .btn-primary{
+    border-radius:1.5em;
+    border:none;
+    background:#f8f8f8;
+    font-weight: 600;
+    color:#555;
+    margin-top: 20px;
+    padding: 15px;
+    transition:all 0.5s ease-in-out;
+}
+.register-left .btn-primary:hover{
+    background:#000;
+    color:#fff;
+
+}
+.register-right {
+    border:none;
+    background:#f8f8f8;
+    border-top-left-radius:10% 50%;
+    border-bottom-left-radius:10% 50%;
+    padding: 50px;
+}
+.register-right h2 {
+    text-align:center;
+    margin-bottom: 10px;
+    color:#555;
+}
+
+.register-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+
+.register-form .btn-primary {
+    float:right;
+    padding:10px 20px;
+    border-radius:1.5rem;
+    font-weight:600;
+    color:#fff;
+    background:#6d00dc;
+    border:none;
+    transition:all 0.5s ease-in-out;
+}
+
+.row{
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    /* margin-left: -15px; */
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form .btn-primary:hover{
+    background:#c03cff;
+}
+.fa-arrow-circle-o-down {
+    margin-top: 60px;
+    margin-bottom: 18px;
+    width: 80px;
+    animation :mover 1s infinite alternate;
+}
+
+@keyframes mover{
+    0%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-20px);
+    }
+}
+
+

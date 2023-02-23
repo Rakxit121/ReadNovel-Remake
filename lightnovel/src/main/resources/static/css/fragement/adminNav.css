@@ -1,0 +1,147 @@
+/* Menu */
+.header{
+    width: 100%;
+}
+.admin_main{
+    display: flex;
+}
+.admin__menu {
+    display: flex;
+    flex-direction: column;
+    background-color: #313541;
+    width: 200px;
+    height: calc(100vh - 125px);
+    color: #fff;
+    font-size: 16px;
+}
+
+.admin__menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.admin__menu li {
+    margin-bottom: 10px;
+}
+
+.admin__menu .menu__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.admin__menu .menu__link:hover {
+    background-color: #4e5667;
+}
+
+.admin__menu .menu__link.active {
+    background-color: #4e5667;
+    font-weight: bold;
+}
+
+.admin__menu .logout {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.admin__menu .logout:hover {
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+/**,*/
+/**::before,*/
+/**::after {*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*body {*/
+/*    margin: auto;*/
+/*    height: 100%;*/
+/*    overflow-x: hidden;*/
+/*}*/
+/*.adminContainer {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.admin {*/
+/*    flex: 1;*/
+/*    max-width: 100%;*/
+/*}*/
+
+/*.logo {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    background-color: #313541;*/
+/*    color: #fff;*/
+/*    height: 70px;*/
+/*    margin: 0;*/
+/*}*/
+/*.img-logo{*/
+/*    width: 200px;*/
+/*    vertical-align: middle;*/
+/*    border-style: none;*/
+/*}*/
+
+/*.admin__nav {*/
+/*    background-color: #313541;*/
+/*}*/
+
+/*.menu {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+/*.menu__item {*/
+/*    margin: 0;*/
+/*}*/
+
+/*.menu__link {*/
+/*    display: block;*/
+/*    padding: 1rem 2rem;*/
+/*    color: #76808f;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.logout {*/
+/*    display: block;*/
+/*    margin-top: auto;*/
+/*    padding: 1rem 2rem;*/
+/*    color: #76808f;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*@media (min-width: 768px) {*/
+/*    .adminContainer {*/
+/*        justify-content: flex-start;*/
+/*    }*/
+
+/*    .admin {*/
+/*        flex: 0 0 250px;*/
+/*        max-width: 250px;*/
+/*    }*/
+
+/*    .admin__nav {*/
+/*        flex: 1;*/
+/*    }*/
+/*}*/
+
+
+
+

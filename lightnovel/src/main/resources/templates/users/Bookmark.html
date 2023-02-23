@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>User Bookmark Page</title>
+        <link rel="stylesheet" th:href="@{~/css/footer.css}">
+        <link rel="stylesheet" th:href="@{~/css/header.css}">
+
+        <link rel="stylesheet" th:href="@{~/css/Bookmark.css}">
+
+    </head>
+    <body>
+
+    <main>
+        <div th:replace="fragment/header_frag.html :: header"></div>
+
+        <div class="bookmark-list">
+            <div class="card">
+                <span class="close-btn">&times;</span>
+                <img src="https://api.mtlnation.com/media/novel_covers/52790802b88e457cbbb87616762e6148.jpg" alt="Book cover">
+                <div class="card-info">
+                    <h3 class="card-title" th:href="@{~/novelSitePage}">Weak Swordsmanship? During The College Entrance Examination, I Staged The Sword To Open The Gate Of Heaven!</h3>
+                    <p class="card-description">Li Changan is reborn and activates the Xueba system, which requires him to complete tasks related to kendo in order to receive rewards.</p>
+                    <div class="card-meta">Updated 5 days ago</div>
+                    <div class="card-rating">4.5</div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <footer th:replace="fragment/footer_frag.html :: footer"></footer>
+    </main>
+
+
+
+    </body>
+</html>

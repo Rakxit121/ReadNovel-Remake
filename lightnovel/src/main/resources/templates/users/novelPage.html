@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+      <title>Novel Page</title>
+
+
+    <link rel="stylesheet" th:href="@{~/css/footer.css}">
+    <link rel="stylesheet" th:href="@{~/css/header.css}">
+    <link rel="stylesheet" th:href="@{~/css/novelPage.css}">
+  </head>
+  <body>
+
+  <div th:replace="fragment/header_frag.html :: header"></div>
+
+  <div class="novel_main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Fey-Evolution-Merchant</h5>
+                <h6 class="card-subtitle mb-2 text-muted">by Amber Button</h6>
+                <p class="card-text">Genre: Action, Adventure, Fantasy</p>
+                <p class="card-text">Type: Chinese Webnovel</p>
+                <p class="card-text">Tag: CHINESE NOVEL</p>
+                <p class="card-text">Status: OnGoing</p>
+                <p class="card-text">Rating: Average 4.3 / 5 out of 547</p>
+                <div class="button-group">
+                  <a href="#" class="btn btn-secondary">Continue Reading</a>
+                  <a href="#" class="btn btn-primary"><i class="fas fa-bookmark"></i> Bookmark</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br>
+
+    <div class="container-fluid description">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h2>Description</h2>
+          <p>Insert novel description here</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer th:replace="fragment/footer_frag.html :: footer"></footer>
+
+  </body>
+</html>
