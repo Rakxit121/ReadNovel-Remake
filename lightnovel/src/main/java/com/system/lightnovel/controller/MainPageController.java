@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,15 +35,15 @@ public class MainPageController {
 
     @GetMapping("/main")
     public String getMainPage(Model model) {
-//        List<Novel> novels = novelService.findAllNovel();
-//        model.addAttribute("novels", novels);
+        List<Novel> novels = novelService.fetchAll();
+        model.addAttribute("novels", novels);
         return "users/mainpage";
     }
 
-    @GetMapping("/novelSitePage")
-    public String getNovelPage(Model model) {
-        List<Novel> novels = novelService.fetchAll();
-        model.addAttribute("novels", novels);
+    @GetMapping("/novelSitePage/{id}")
+    public String getNovelPage(@PathVariable("id") Integer id, Model model) {
+        Novel novel = novelService.fetchById(id);
+        model.addAttribute("novels", novel);
         return "users/novelPage";
     }
 

@@ -34,70 +34,26 @@
 <!--            </div>-->
 
 
-            <div class="row">
+            <div class="row" th:each="books:${novels}">
                 <div class="col card novel-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
+                    <img src="" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
                     <div class="card-body">
-                        <h5 class="card-title">Sample Novel Title</h5>
+                        <h5 class="card-title"th:text="${books.title}"></h5>
                         <p class="card-text">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star" th:text="${books.rating}"></span>
                         </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <a th:href="@{~/novelSitePage/}+${books.id}" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
 
-                <div class="col card novel-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Another Sample Novel Title</h5>
-                        <p class="card-text">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-                <hr style="background-color: #4e5561">
+
+
             </div>
 
-            <div class="row">
-                <div class="col card novel-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Sample Novel Title</h5>
-                        <p class="card-text">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-
-                <div class="col card novel-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-left" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Another Sample Novel Title</h5>
-                        <p class="card-text">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
 
 
 
@@ -138,16 +94,16 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-            <hr style="background-color: #4e5561; height: 100%">
-            <div class="ads">
-                <h2>Advertisements</h2>
-            </div>
+<!--            <hr style="background-color: #4e5561; height: 100%">-->
+<!--            <div class="ads">-->
+<!--                <h2>Advertisements</h2>-->
+<!--            </div>-->
         </main>
 
 
 
-        <footer th:replace="fragment/footer_frag.html :: footer"></footer>
-
+<!--        <div>        <footer th:replace="fragment/footer_frag.html :: footer"></footer>-->
+<!--        </div>-->
     </body>
 </html>
 

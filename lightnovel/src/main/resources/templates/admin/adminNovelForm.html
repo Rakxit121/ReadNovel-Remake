@@ -98,7 +98,7 @@
       background-color: #ff005a;
     }
 
-    #submit-btn {
+    .submit-btn {
       background-color: #8400ff;
       color: white;
       padding: 10px 20px;
@@ -108,11 +108,11 @@
       cursor: pointer;
     }
 
-    #submit-btn:hover {
+    .submit-btn:hover {
       background-color: #ff005a;
     }
 
-    #cancel-btn {
+    .cancel-btn {
       background-color: #e6e6e6;
       color: #333;
       padding: 10px 20px;
@@ -123,7 +123,7 @@
       margin-right: 10px;
     }
 
-    #cancel-btn:hover {
+    .cancel-btn:hover {
       background-color: #ccc;
     }
 
@@ -132,23 +132,27 @@
   </style>
 
   <div class="form-container">
-    <form>
+    <form method="post" th:action="@{/admin/save}" th:object="${addnovel}">
       <div id="image-preview-container" class="form-group">
         <img id="image-preview" src="#" alt="Image Preview">
       </div>
-      <input type="file" id="image" name="image" style="display:none;">
-      <button type="button" onclick="document.getElementById('image').click()">Upload Image</button>
+      <input type="file" id="image" name="image" style="display:none;" onclick="displayImage()">
+<!--             th:field="*{addnovel.image_data}"/>-->
 
       <div class="form-group">
-        <input type="text" id="title" name="title" placeholder="Title" required>
+
+        <input type="text" id="title" name="title" placeholder="Title" required th:field="*{title}"
+               />
       </div>
 
       <div class="form-group">
-        <input type="text" id="author" name="author" placeholder="Author" required>
+        <input type="text" id="author" name="author" placeholder="Author" required
+               th:field="*{author}"/>
       </div>
 
       <div class="form-group">
-        <select id="genre" name="genre" placeholder="Genre" required>
+        <select id="genre" name="genre" placeholder="Genre" required
+                th:field="*{genre}">
           <option value="">Select a genre</option>
           <option value="Action">Action</option>
           <option value="Adventure">Adventure</option>
@@ -163,7 +167,7 @@
           <option value="Other">Other</option>
         </select>
         <label for="status">Status:</label>
-        <select id="status" name="status" required>
+        <select id="status" name="status" required th:field="*{status}">
           <option value="">Select a status</option>
           <option value="Ongoing">Ongoing</option>
           <option value="Completed">Completed</option>
@@ -173,17 +177,20 @@
         <input type="file" id="pdf" name="pdf"> -->
 
         <label for="rating">Rating:</label>
-        <input type="number" id="rating" name="rating" min="1" max="5" required>
+        <input type="number" id="rating" name="rating" min="1" max="5" required
+               th:field="*{rating}"/>
 
         <label for="chapters">Chapters:</label>
-        <input type="number" id="chapters" name="chapters" min="1" required>
+        <input type="number" id="chapters" name="chapters" min="1" required
+               th:field="*{latestChapter}"/>
 
         <label for="synopsis">Synopsis:</label>
-        <textarea id="synopsis" name="synopsis" rows="5" required></textarea>
+        <textarea id="synopsis" name="synopsis" rows="5" required
+                  th:field="*{description}"></textarea>
 
         <div class="button-container">
-          <input type="submit" value="Submit">
-          <button type="button" onclick="clearForm()">Clear</button>
+          <input class="submit-btn" type="submit" value="Submit">
+          <button class="cancel-btn" type="button" onclick="clearForm()">Clear</button>
         </div>
       </div>
     </form>
@@ -281,11 +288,7 @@
               });
     });
   </script>
-  <script>
-    function allert(){
-      alert("API run sucessful")
-    }
-  </script>
+
 </body>
 </html>
 

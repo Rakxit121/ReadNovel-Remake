@@ -43,6 +43,8 @@ header a:hover {
 }
 
 main {
+  display: flex;
+  justify-content: center;
   padding: 16px;
   float: left;
 }

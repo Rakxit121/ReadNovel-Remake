@@ -14,7 +14,7 @@ public interface NovelService {
     Novel fetchById(Integer id);
 
     //Create ------------------------------------------------------
-    String save(NovelPojo novelPojo);
+    NovelPojo save(NovelPojo novelPojo);
 
     //Update ------------------------------------------------------
     String update(NovelPojo novelPojo);

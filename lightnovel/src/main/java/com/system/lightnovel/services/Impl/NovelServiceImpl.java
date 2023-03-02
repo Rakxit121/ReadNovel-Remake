@@ -4,23 +4,22 @@ import com.system.lightnovel.entity.Novel;
 import com.system.lightnovel.pojo.NovelPojo;
 import com.system.lightnovel.repo.NovelRepo;
 import com.system.lightnovel.services.NovelService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class NovelServiceImpl implements NovelService {
 
     private final NovelRepo novelRepo;
 
-    public NovelServiceImpl(NovelRepo novelRepo) {
-        this.novelRepo = novelRepo;
-    }
 
     @Override
     public List<Novel> fetchAll() {
-        return novelRepo.findAll();
+        return this.novelRepo.findAll();
     }
 
     @Override
@@ -34,8 +33,9 @@ public class NovelServiceImpl implements NovelService {
     }
 
     @Override
-    public String save(NovelPojo novelPojo) {
+    public NovelPojo save(NovelPojo novelPojo) {
         Novel novel = new Novel();
+        novel.setId(novelPojo.getId());
         novel.setTitle(novelPojo.getTitle());
         novel.setDescription(novelPojo.getDescription());
         novel.setAuthor(novelPojo.getAuthor());
@@ -45,7 +45,7 @@ public class NovelServiceImpl implements NovelService {
         novel.setLatestChapter(novelPojo.getLatestChapter());
         novel.setImageData(novelPojo.getImageData());
         novelRepo.save(novel);
-        return "Novel saved successfully";
+        return new NovelPojo(novel);
     }
 
     @Override

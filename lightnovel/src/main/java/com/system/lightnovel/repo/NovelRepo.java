@@ -10,11 +10,11 @@ import java.util.Optional;
 
 public interface NovelRepo extends JpaRepository<Novel, Integer> {
 
-    Optional<Novel> findNovelByTitle(String title);
+//    Optional<Novel> findBookmarksByNovelIdndNovelByTitle(String title);
 
-    List<Bookmark> findBookmarksByNovelId(Integer id);
+//    List<Bookmark> findBookmarksByNovelId(Integer id);
 
-    Bookmark saveBookmark(Bookmark bookmark);
+//    Bookmark saveBookmark(Bookmark bookmark);
 
-    void deleteBookmark(Integer id);
+//    void deleteBookmark(Integer id);
 }

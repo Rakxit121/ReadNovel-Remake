@@ -3,6 +3,7 @@ package com.system.lightnovel.controller;
 import com.system.lightnovel.entity.Novel;
 import com.system.lightnovel.pojo.NovelPojo;
 import com.system.lightnovel.services.NovelService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,8 @@ public class NovelController {
 //            return new ResponseEntity<>("An unexpected error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
+
+
 
 
     @PutMapping("/{id}")

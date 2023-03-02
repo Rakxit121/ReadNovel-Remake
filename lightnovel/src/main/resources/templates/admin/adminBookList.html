@@ -57,7 +57,7 @@
                                         <td th:text="${books.latestChapter}"></td>
                                         <td th:text="${books.description}"></td>
 
-                                        <td> <a class="delete_button" th:href="@{~/admin/delete/}+${books.id}" >delete</a></td>
+                                        <td> <a class="delete_button" th:href="@{~/novels/}+${books.id}" >delete</a></td>
 <!--                                        <td> <a class="edit_button" th:href="@{~/admin/edit/}+${books.id}" >edit</a></td>-->
                                     </tr>
                                     </tbody>

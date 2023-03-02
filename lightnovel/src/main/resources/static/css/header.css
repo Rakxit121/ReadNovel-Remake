@@ -146,10 +146,12 @@
           width: 100%;
           margin-bottom: 8px;
         }
+
       
         .search-button {
-          width: 100%;
+          width: 15%;
           margin-bottom: 8px;
+          margin-right: 8px;
         }
       
         .profile-pic {
@@ -167,4 +169,11 @@
           width: 100%;
         }
       }
+
+    @media (max-width: 400px) {
+      .search-form{
+        display: none;
+      }
+
+    }
       
