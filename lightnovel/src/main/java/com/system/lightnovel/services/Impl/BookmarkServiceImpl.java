@@ -4,18 +4,26 @@ import com.system.lightnovel.entity.Bookmark;
 import com.system.lightnovel.pojo.BookmarkPojo;
 import com.system.lightnovel.repo.BookmarkRepo;
 import com.system.lightnovel.repo.NovelRepo;
+import com.system.lightnovel.repo.UserRepo;
 import com.system.lightnovel.services.BookmarkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class BookmarkServiceImpl implements BookmarkService {
 
     public final NovelRepo novelRepo;
+    public final UserRepo userRepo;
     public final BookmarkRepo bookmarkRepo;
+
 
     @Override
     public void deleteBookmark(Integer id) {
@@ -25,19 +33,59 @@ public class BookmarkServiceImpl implements BookmarkService {
     @Override
     public BookmarkPojo addBookmark(BookmarkPojo bookmarkPojo) {
         Bookmark bookmark=new Bookmark();
-//        Novel novel = novelRepo.findById(novelId)
-//                .orElseThrow(() -> new NotFoundException("Novel not found"));
-//
-//        Bookmark bookmark = new Bookmark();
-//        bookmark.setNovelId(novel);
-//        bookmark.setId(userId);
+        bookmark.setId(bookmarkPojo.getId());
+//        bookmark.setNovelId(bookmarkPojo.getNovelId());
+//        bookmark.setUserId(bookmarkPojo.getUserId());
+        bookmark.setUserId(userRepo.findById(bookmarkPojo.getUserId()).orElseThrow());
+        bookmark.setNovelId(novelRepo.findById(bookmarkPojo.getNovelId()).orElseThrow());
+//        bookmark.setTitle(novelRepo.findById(bookmarkPojo.getTitle()).orElseThrow());
+//        bookmark.setDescription(novelRepo.findById(bookmarkPojo.getDescription()).orElseThrow());
+//        bookmark.setAuthor(novelRepo.findById(bookmarkPojo.getAuthor()).orElseThrow());
+//        bookmark.setGenre(novelRepo.findById(bookmarkPojo.getGenre()).orElseThrow());
+//        bookmark.setStatus(novelRepo.findById(bookmarkPojo.getStatus()).orElseThrow());
+//        bookmark.setRating(novelRepo.findById(bookmarkPojo.getRating()).orElseThrow());
+
         bookmarkRepo.save(bookmark);
         return null;
 
     }
 
     @Override
-    public List<Bookmark> getBookmarksByNovelId() {
-        return this.bookmarkRepo.findAll();
+    public Bookmark getBookmarksByNovelId(Integer id) {
+        Optional<Bookmark> optionalBookmark = bookmarkRepo.findById(id);
+        if (optionalBookmark.isPresent()) {
+            return optionalBookmark.get();
+        } else {
+            throw new IllegalArgumentException("Bookamrk with ID " + id + " not found.");
+        }
+    }
+
+
+
+    @Override
+    public List<Bookmark> getAllBookmarks() {
+//        return this.bookmarkRepo.findAll();
+        List<Bookmark> allBookmark = bookmarkRepo.findAll();
+        return allBookmark;
+    }
+
+
+
+    public String getImageBase64(String fileName) {
+        if (fileName!=null) {
+            String filePath = System.getProperty("user.dir")+"/images/bikes/";
+            File file = new File(filePath + fileName);
+            byte[] bytes;
+            try {
+                bytes = Files.readAllBytes(file.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+            return Base64.getEncoder().encodeToString(bytes);
+        }
+        return null;
     }
 }
+
+

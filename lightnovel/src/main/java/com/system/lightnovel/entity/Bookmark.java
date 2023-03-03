@@ -30,6 +30,28 @@ public class Bookmark {
             foreignKey = @ForeignKey(name = "FK_novelId"))
     private Novel novelId;
 
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "author")
+    private String author;
+
+    @Column(name = "rating")
+    private int rating;
+
+    @Column(name = "genre")
+    private String genre;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "latest_chapter")
+    private String latestChapter;
+
+
 //    public void setNovel(Novel novel) {
 //        this.novelId = novel;
 //    }

@@ -36,7 +36,7 @@
 
             <div class="row" th:each="books:${novels}">
                 <div class="col card novel-card">
-                    <img src="" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
+                    <img th:src="@{~/images/nov_p2}" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
                     <div class="card-body">
                         <h5 class="card-title"th:text="${books.title}"></h5>
                         <p class="card-text">
@@ -44,7 +44,7 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
-                            <span class="fa fa-star" th:text="${books.rating}"></span>
+                            <span class="fa fa-star" th:text="${books.rating}"> </span>
                         </p>
                         <a th:href="@{~/novelSitePage/}+${books.id}" class="btn btn-primary">Read More</a>
                     </div>

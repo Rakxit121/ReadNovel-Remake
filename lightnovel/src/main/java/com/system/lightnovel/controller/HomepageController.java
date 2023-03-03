@@ -26,7 +26,7 @@ public class HomepageController {
 
     @GetMapping("/home")
     public String getMainPage(){
-        return "users/mainpage";
+        return "redirect:/main";
     }
 
     @GetMapping("/register")

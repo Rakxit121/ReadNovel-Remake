@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -23,7 +24,7 @@ public class NovelPojo {
     private String latestChapter;
 
     @Lob
-    private byte[] imageData;
+    private MultipartFile imageData;
 
     public NovelPojo(Novel novel) {
         this.id = novel.getId();
@@ -34,7 +35,7 @@ public class NovelPojo {
         this.genre = novel.getGenre();
         this.status = novel.getStatus();
         this.latestChapter = novel.getLatestChapter();
-        this.imageData = novel.getImageData();
+//        this.imageData = novel.getImageData();
     }
 
 }

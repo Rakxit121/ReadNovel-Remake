@@ -7,7 +7,7 @@
 <body>
 
         <div class="novel-list">
-            <div th:each="novel : ${novels}">
+            <div th:each="novel:${novels}">
                 <div class="row">
                     <div class="col-md-3">
                         <img th:src="${novel.image}" class="img-thumbnail" alt="Novel Image">
@@ -22,7 +22,7 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                         <div class="read-more">
-                            <button class="btn btn-primary">Read More</button>
+                            <button th:href="@{~/novelSitePage/}+${novel.id}"  class="btn btn-primary">Read More</button>
                         </div>
                     </div>
                 </div>

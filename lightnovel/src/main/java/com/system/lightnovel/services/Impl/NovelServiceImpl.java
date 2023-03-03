@@ -7,12 +7,23 @@ import com.system.lightnovel.services.NovelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+
+
 
 @Service
 @RequiredArgsConstructor
 public class NovelServiceImpl implements NovelService {
+
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\images\\novel\\";
 
     private final NovelRepo novelRepo;
 
@@ -33,7 +44,7 @@ public class NovelServiceImpl implements NovelService {
     }
 
     @Override
-    public NovelPojo save(NovelPojo novelPojo) {
+    public NovelPojo save(NovelPojo novelPojo) throws IOException {
         Novel novel = new Novel();
         novel.setId(novelPojo.getId());
         novel.setTitle(novelPojo.getTitle());
@@ -43,7 +54,15 @@ public class NovelServiceImpl implements NovelService {
         novel.setGenre(novelPojo.getGenre());
         novel.setStatus(novelPojo.getStatus());
         novel.setLatestChapter(novelPojo.getLatestChapter());
-        novel.setImageData(novelPojo.getImageData());
+//        novel.setImageData(novelPojo.getImageData());
+
+        if(!Objects.equals(novelPojo.getImageData().getOriginalFilename(), "")){
+            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, novelPojo.getImageData().getOriginalFilename());
+            Files.write(fileNameAndPath, novelPojo.getImageData().getBytes());
+
+            novel.setImageData(novelPojo.getImageData().getOriginalFilename());
+        }
+
         novelRepo.save(novel);
         return new NovelPojo(novel);
     }
@@ -61,7 +80,7 @@ public class NovelServiceImpl implements NovelService {
             novel.setGenre(novelPojo.getGenre());
             novel.setStatus(novelPojo.getStatus());
             novel.setLatestChapter(novelPojo.getLatestChapter());
-            novel.setImageData(novelPojo.getImageData());
+            novel.setImageBase64(getImageBase64(novel.getImageData()));
             novelRepo.save(novel);
             return "Novel updated successfully";
         } else {
@@ -81,5 +100,23 @@ public class NovelServiceImpl implements NovelService {
         } else {
             throw new IllegalArgumentException("Cannot delete non-existent novel with ID " + id);
         }
+    }
+//}
+
+
+    public String getImageBase64(String fileName) {
+        if (fileName!=null) {
+            String filePath = System.getProperty("user.dir")+"/images/novel/";
+            File file = new File(filePath + fileName);
+            byte[] bytes;
+            try {
+                bytes = Files.readAllBytes(file.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+            return Base64.getEncoder().encodeToString(bytes);
+        }
+        return null;
     }
 }
