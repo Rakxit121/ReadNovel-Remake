@@ -13,7 +13,60 @@
         <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css}">
 
     </head>
+
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+            /*float: left;*/
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .row{
+            display: flex;
+            float: left;
+            align-items: center;
+            /* display: flex; */
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .btn-read-more {
+            background-color: purple;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-read-more:hover {
+            background-color: white;
+            color: purple;
+            box-shadow: 0 0 10px 0 rgba(128, 0, 128, 0.5);
+        }
+
+
+        @media (max-width: 700px) {
+            .row{
+                display: flex;
+                justify-content: center;
+                padding: 16px;
+                /*float: left;*/
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+        }
+    </style>
+
     <body>
+
+
 
         <header th:replace="fragment/header_frag.html :: header"></header>
 
@@ -34,70 +87,61 @@
 <!--            </div>-->
 
 
-            <div class="row" th:each="books:${novels}">
-                <div class="col card novel-card">
-                    <img th:src="@{~/images/nov_p2}" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
-                    <div class="card-body">
-                        <h5 class="card-title"th:text="${books.title}"></h5>
-                        <p class="card-text">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star" th:text="${books.rating}"> </span>
-                        </p>
-                        <a th:href="@{~/novelSitePage/}+${books.id}" class="btn btn-primary">Read More</a>
+<!--            <div class="row" th:each="books:${novels}">-->
+<!--                <div class="col card novel-card">-->
+<!--                    <img th:src="@{~/images/nov_p2}" class="card-img-left" alt="..." style="height: 200px; width: 300px;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title"th:text="${books.title}"></h5>-->
+<!--                        <p class="card-text">-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star"></span>-->
+<!--                            <span class="fa fa-star" th:text="${books.rating}"> </span>-->
+<!--                        </p>-->
+<!--                        <a th:href="@{~/novelSitePage/}+${books.id}" class="btn btn-primary">Read More</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+            <div th:each="books, iterStat : ${novels}"  style="width: 90%">
+                <div th:if="${iterStat.index % 2 == 0}" class="row">
+                    <div class="col card novel-card">
+                        <img th:src="@{~/images/nov_p1.jpg}" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${books.title}" th:href="@{~/novelSitePage/}+${books.id}"></h5>
+                            <p class="card-text">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star" th:text="${books.rating}"> </span>
+                            </p>
+                            <a th:href="@{~/novelSitePage/}+${books.id}" class="btn btn-primary btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                    <div th:if="${novels.size() > iterStat.index + 1}" class="col card novel-card">
+                        <img th:src="@{~/images/nov_p2.jpg}" class="card-img-left" alt="..." style="height: 200px; width: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${novels[iterStat.index + 1].title}" th:href="@{~/novelSitePage/}+${books.id+1}"></h5>
+                            <p class="card-text">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star" th:text="${novels[iterStat.index + 1].rating}"> </span>
+                            </p>
+                            <a th:href="@{~/novelSitePage/}+${novels[iterStat.index + 1].id}" class="btn btn-primary btn-read-more">Read More</a>
+                        </div>
                     </div>
                 </div>
-
-
-
             </div>
 
 
 
 
-            <!--            <div class="container">-->
-<!--              <h1 >Latest Releases</h1>-->
-<!--              <h1 th:text="#{latestReleases}">Latest Releases</h1>-->
-<!--              <div class="novel-list">-->
-<!--                <div class="novel" th:each="novel : ${latestNovels}">-->
-<!--                  <img th:src="@{/img/novels/} + ${novel.coverImage}" alt="Novel Cover">-->
-<!--                  <h2 th:text="${novel.title}">Novel Title</h2>-->
-<!--                  <p th:text="${novel.author}">Author</p>-->
-<!--                  <a th:href="@{/novel/} + ${novel.id}" th:text="#{read}" class="read-button">Read</a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-
-<!--            <div class="row">-->
-<!--                <hr>-->
-<!--                <div th:each="novel : ${novels}">-->
-<!--                    <div class="col-6">-->
-<!--                        <div class="novel-card">-->
-<!--                            <img th:src="${novel.image}" class="novel-image" alt="Novel Image">-->
-<!--                            <h3>-->
-<!--                                <a th:href="${novel.link}" th:text="${novel.title}"></a>-->
-<!--                            </h3>-->
-<!--                            <div class="novel-review">-->
-<!--                                <i class="fas fa-star"></i>-->
-<!--                                <i class="fas fa-star"></i>-->
-<!--                                <i class="fas fa-star"></i>-->
-<!--                                <i class="fas fa-star"></i>-->
-<!--                                <i class="fas fa-star-half-alt"></i>-->
-<!--                            </div>-->
-<!--                            <div class="novel-read-more">-->
-<!--                                <a th:href="${novel.link}" class="btn btn-primary">Read More</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <hr style="background-color: #4e5561; height: 100%">-->
-<!--            <div class="ads">-->
-<!--                <h2>Advertisements</h2>-->
-<!--            </div>-->
         </main>
 
 

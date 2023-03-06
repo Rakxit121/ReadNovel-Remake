@@ -82,6 +82,15 @@ public class UserServiceImpl implements UserService{
         return new UserPojo(user);
     }
 
+
+    @Override
+    public void deleteUser(Integer id) {
+        userRepo.deleteById(id);
+    }
+//    ------------------------------------------------------
+//              Feedback
+//    ------------------------------------------------------
+
     @Override
     public String submitFeedback(FeedbackPojo feedbackPojo) {
         Feedback feedback = new Feedback();

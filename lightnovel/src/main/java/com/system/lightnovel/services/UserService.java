@@ -31,4 +31,5 @@ public interface UserService {
     void deleteFeedback(Integer id);
 
 
+    void deleteUser(Integer id);
 }

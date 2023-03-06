@@ -3,8 +3,8 @@ package com.system.lightnovel.controller;
 import com.system.lightnovel.entity.Bookmark;
 import com.system.lightnovel.entity.Novel;
 import com.system.lightnovel.pojo.BookmarkPojo;
-import com.system.lightnovel.pojo.NovelPojo;
 import com.system.lightnovel.pojo.UserPojo;
+import com.system.lightnovel.repo.BookmarkRepo;
 import com.system.lightnovel.repo.NovelRepo;
 import com.system.lightnovel.services.BookmarkService;
 import com.system.lightnovel.services.NovelService;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import java.security.Principal;
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -37,11 +38,14 @@ public class MainPageController {
     @Autowired
     private final BookmarkService bookmarkService;
 
-    public MainPageController(UserService userService , NovelService novelService, NovelRepo novelRepo, BookmarkService bookmarkService) {
+    private final BookmarkRepo bookmarkRepo;
+
+    public MainPageController(UserService userService , NovelService novelService, NovelRepo novelRepo, BookmarkService bookmarkService, BookmarkRepo bookmarkRepo) {
         this.userService = userService;
         this.novelService = novelService;
         this.novelRepo = novelRepo;
         this.bookmarkService = bookmarkService;
+        this.bookmarkRepo = bookmarkRepo;
     }
 
     @GetMapping("/main")
@@ -59,15 +63,35 @@ public class MainPageController {
         return "users/novelPage";
     }
 
-    //
-    @GetMapping("/saveBookmark")
-    public String getBookmarkPage(@Valid BookmarkPojo bookmarkPojo/*, Integer id*/) {
+    @GetMapping("/saveBookmark/{n_id}")
+    public String getSaveBookmarkPage(@Valid BookmarkPojo bookmarkPojo, Principal principal, @PathVariable("n_id") Integer n_id) throws ParseException {
+        Integer u_id = userService.findByEmail(principal.getName()).getId();
+        bookmarkPojo.setUserId(u_id);
+        bookmarkPojo.setNovelId(n_id);
+
+//        String b_title = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//        String b_description = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//        String b_author = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//        String b_genre = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//        String b_status = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//        String b_rating = novelService.fetchById(Integer.valueOf(principal.getName())).getTitle();
+//
         bookmarkService.addBookmark(bookmarkPojo);
-        return "redirect:/novelSitePage/{id}";
+        return "redirect:/novelSitePage/" + n_id;
     }
 
+
+//    @GetMapping("/saveBookmark/{n_id}")
+//    public String getSaveBookmarkPage(@Valid BookmarkPojo bookmarkPojo, Principal principal, @PathVariable("n_id") Integer n_id) throws ParseException {
+//        Integer u_id = userService.findByEmail(principal.getName()).getId();
+//        bookmarkPojo.setUserId(u_id);
+//        bookmarkPojo.setNovelId(n_id);
+//        bookmarkService.addBookmark(bookmarkPojo);
+//        return "redirect:/novelSitePage/" + n_id;
+//    }
+
     @GetMapping("/bookmarkPage")
-    public String getBookmark(Model model){
+    public String getBookmarkPage(Model model){
         List<Bookmark> bookmarks = bookmarkService.getAllBookmarks();
         model.addAttribute("bookmarks", bookmarks);
         return "users/Bookmark";

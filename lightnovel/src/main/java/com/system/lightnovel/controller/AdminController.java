@@ -3,6 +3,7 @@ package com.system.lightnovel.controller;
 
 import com.system.lightnovel.entity.Feedback;
 import com.system.lightnovel.entity.Novel;
+import com.system.lightnovel.entity.User;
 import com.system.lightnovel.pojo.NovelPojo;
 import com.system.lightnovel.services.NovelService;
 import com.system.lightnovel.services.UserService;
@@ -11,11 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -43,7 +43,7 @@ public class AdminController {
 
     @GetMapping("")
     public String getAdminDashboard(){
-        return "admin/Dashboard";
+        return "redirect:/novelList";
     }
 
     @GetMapping("/novelList")
@@ -67,9 +67,9 @@ public class AdminController {
         return "admin/adminNovelForm";
     }
     @PostMapping("/save")
-    public String saveNovel(@Valid NovelPojo novelpojo) {
+    public String saveNovel(@Valid NovelPojo novelpojo, @RequestParam("image") MultipartFile image) throws IOException {
         novelService.save(novelpojo);
-        return "redirect:admin/novelList";
+        return "redirect:/novelList";
     }
 //     ----------------------------------------
 //    CommentsSection or Feedback
@@ -79,7 +79,7 @@ public class AdminController {
     public String getUserComments(Model model){
         List<Feedback> feedbacks = userService.fetchAllFeedback();
         model.addAttribute("feedback", feedbacks);
-        return "redirect:admin/novelForm";
+        return "admin/AdminUserComment";
     }
 
     @GetMapping("/deletefeed/{id}")
@@ -93,9 +93,23 @@ public class AdminController {
 //        return "redirect:/admin/contactfetch";
 //    }
 
+//-------------------------------------------------------------
+//    User or Cusromer
+//-------------------------------------------------------------
 
 
 
+    @GetMapping("/userList")
+    public String getUserLit(Model model){
+        List<User> users = userService.fetchAll();
+        model.addAttribute("user", users);
+        return "admin/CustomerList";
+    }
 
 
+    @GetMapping("/deleteUser/{id}")
+    public String deleteCustomer(@PathVariable("id") Integer id) {
+        userService.deleteUser(id);
+        return "redirect:/admin/CustomerList";
+    }
 }

@@ -56,7 +56,7 @@ public class NovelServiceImpl implements NovelService {
         novel.setLatestChapter(novelPojo.getLatestChapter());
 //        novel.setImageData(novelPojo.getImageData());
 
-        if(!Objects.equals(novelPojo.getImageData().getOriginalFilename(), "")){
+        if(novelPojo.getImageData() != null && !novelPojo.getImageData().isEmpty()){
             Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, novelPojo.getImageData().getOriginalFilename());
             Files.write(fileNameAndPath, novelPojo.getImageData().getBytes());
 

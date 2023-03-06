@@ -8,6 +8,7 @@ import com.system.lightnovel.repo.UserRepo;
 import com.system.lightnovel.services.BookmarkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.system.lightnovel.entity.Novel;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,25 +31,82 @@ public class BookmarkServiceImpl implements BookmarkService {
         novelRepo.deleteById(id);
     }
 
+//    @Override
+//    public BookmarkPojo addBookmark(BookmarkPojo bookmarkPojo) {
+//        Bookmark bookmark=new Bookmark();
+////        bookmark.setId(bookmarkPojo.getId());
+////        bookmark.setNovelId(bookmarkPojo.getNovelId());
+////        bookmark.setUserId(bookmarkPojo.getUserId());
+//        bookmark.setUserId(userRepo.findById(bookmarkPojo.getUserId()).orElseThrow());
+//        bookmark.setNovelId(novelRepo.findById(bookmarkPojo.getNovelId()).orElseThrow());
+////        bookmark.setTitle(novelRepo.findById(bookmarkPojo.getTitle()).orElseThrow());
+////        bookmark.setDescription(novelRepo.findById(bookmarkPojo.getDescription()).orElseThrow());
+////        bookmark.setAuthor(novelRepo.findById(bookmarkPojo.getAuthor()).orElseThrow());
+////        bookmark.setGenre(novelRepo.findById(bookmarkPojo.getGenre()).orElseThrow());
+////        bookmark.setStatus(novelRepo.findById(bookmarkPojo.getStatus()).orElseThrow());
+////        bookmark.setRating(novelRepo.findById(bookmarkPojo.getRating()).orElseThrow());
+//
+//        bookmarkRepo.save(bookmark);
+////        return new BookmarkPojo(bookmark);
+//            return null;
+////        return bookmarkPojo;
+//    }
+
+
+//    @Override
+//    public BookmarkPojo addBookmark(BookmarkPojo bookmarkPojo) {
+//        Bookmark bookmark = new Bookmark();
+//        bookmark.setUserId(userRepo.findById(bookmarkPojo.getUserId())
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id")));
+//        bookmark.setNovelId(novelRepo.findById(bookmarkPojo.getNovelId())
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+////        bookmark.setTitle(String.valueOf(novelRepo.findById(bookmarkPojo.getNovelId())
+////                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id"))));
+//        bookmark.setTitle(bookmarkPojo.getTitle());
+//        bookmark.setDescription(bookmarkPojo.getDescription());
+//        bookmark.setAuthor(bookmarkPojo.getAuthor());
+//        bookmark.setGenre(bookmarkPojo.getGenre());
+//        bookmark.setStatus(bookmarkPojo.getStatus());
+//        bookmark.setRating(bookmarkPojo.getRating());
+//
+//
+//        bookmarkRepo.save(bookmark);
+//        return new BookmarkPojo(bookmark);
+//    }
+
+
     @Override
     public BookmarkPojo addBookmark(BookmarkPojo bookmarkPojo) {
-        Bookmark bookmark=new Bookmark();
-        bookmark.setId(bookmarkPojo.getId());
-//        bookmark.setNovelId(bookmarkPojo.getNovelId());
-//        bookmark.setUserId(bookmarkPojo.getUserId());
-        bookmark.setUserId(userRepo.findById(bookmarkPojo.getUserId()).orElseThrow());
-        bookmark.setNovelId(novelRepo.findById(bookmarkPojo.getNovelId()).orElseThrow());
-//        bookmark.setTitle(novelRepo.findById(bookmarkPojo.getTitle()).orElseThrow());
-//        bookmark.setDescription(novelRepo.findById(bookmarkPojo.getDescription()).orElseThrow());
-//        bookmark.setAuthor(novelRepo.findById(bookmarkPojo.getAuthor()).orElseThrow());
-//        bookmark.setGenre(novelRepo.findById(bookmarkPojo.getGenre()).orElseThrow());
-//        bookmark.setStatus(novelRepo.findById(bookmarkPojo.getStatus()).orElseThrow());
-//        bookmark.setRating(novelRepo.findById(bookmarkPojo.getRating()).orElseThrow());
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserId(userRepo.findById(bookmarkPojo.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id")));
+        bookmark.setNovelId(novelRepo.findById(bookmarkPojo.getNovelId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setTitle(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getTitle)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setDescription(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getDescription)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setAuthor(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getAuthor)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setGenre(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getGenre)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setStatus(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getStatus)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
+        bookmark.setRating(novelRepo.findById(bookmarkPojo.getNovelId())
+                .map(Novel::getRating)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid novel Id")));
 
         bookmarkRepo.save(bookmark);
-        return null;
-
+        return new BookmarkPojo(bookmark);
     }
+
+
+
 
     @Override
     public Bookmark getBookmarksByNovelId(Integer id) {
@@ -64,9 +122,9 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     @Override
     public List<Bookmark> getAllBookmarks() {
-//        return this.bookmarkRepo.findAll();
-        List<Bookmark> allBookmark = bookmarkRepo.findAll();
-        return allBookmark;
+        return this.bookmarkRepo.findAll();
+//        List<Bookmark> allBookmark = bookmarkRepo.findAll();
+//        return allBookmark;
     }
 
 

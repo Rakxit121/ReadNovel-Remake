@@ -1,5 +1,6 @@
 package com.system.lightnovel.controller;
 
+import org.springframework.ui.Model;
 import com.system.lightnovel.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -34,10 +35,11 @@ public class LoginController {
     }
 
     @PostMapping("/logout")
-    public String logout(Authentication authentication) {
+    public String logout(Authentication authentication, Model model) {
         if (authentication.isAuthenticated()) {
             SecurityContextHolder.clearContext();
         }
+        model.addAttribute("message", "Logged Out Successfully!");
         return "redirect:/login";
     }
 

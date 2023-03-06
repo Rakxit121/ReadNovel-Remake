@@ -30,15 +30,15 @@ public class BookmarkController {
 
 
 
-    @GetMapping("/bookmark/{id}")
-    public String getBookmarkById(@PathVariable Integer id) {
-        try {
-            Bookmark bookmark = bookmarkService.getBookmarksByNovelId(id);
-            return String.valueOf(new ResponseEntity<>(bookmark, HttpStatus.OK));
-        } catch (NoSuchElementException e) {
-            return String.valueOf(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-        }
-    }
+//    @GetMapping("/bookmark/{id}")
+//    public String getBookmarkById(@PathVariable Integer id) {
+//        try {
+//            Bookmark bookmark = bookmarkService.getBookmarksByNovelId(id);
+//            return String.valueOf(new ResponseEntity<>(bookmark, HttpStatus.OK));
+//        } catch (NoSuchElementException e) {
+//            return String.valueOf(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//        }
+//    }
 
     @GetMapping("/bookmark/{id}")
     public String addBookmark(@PathVariable Integer id, @Valid BookmarkPojo bookmarkPojo, Principal principal, RedirectAttributes redirectAttributes) throws ParseException {
