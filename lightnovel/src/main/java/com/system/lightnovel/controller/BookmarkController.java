@@ -65,17 +65,22 @@ public class BookmarkController {
 //    }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBookmark(@PathVariable Integer id) {
-        try {
-            bookmarkService.deleteBookmark(id);
-            return new ResponseEntity<>("Bookmark with ID " + id + " deleted", HttpStatus.OK);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>("Invalid request body: " + e.getMessage(), HttpStatus.BAD_REQUEST);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>("Bookmark with ID " + id + " not found", HttpStatus.NOT_FOUND);
-        }
-    }
+//    @DeleteMapping("deleteBookmark/{id}")
+//    public String deleteBookmark(@PathVariable("id") Integer id) {
+////        try {
+////            bookmarkService.deleteBookmark(id);
+////            return new ResponseEntity<>("Bookmark with ID " + id + " deleted", HttpStatus.OK);
+////        } catch (IllegalArgumentException e) {
+////            return new ResponseEntity<>("Invalid request body: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+////        } catch (NoSuchElementException e) {
+////            return new ResponseEntity<>("Bookmark with ID " + id + " not found", HttpStatus.NOT_FOUND);
+////        }
+//////        return "redirect:/bookmarkPage";
+////    }
+//
+//        bookmarkService.deleteBookmark(id);
+//        return "redirect:/bookmarkPage";
+//    }
 
 }
 

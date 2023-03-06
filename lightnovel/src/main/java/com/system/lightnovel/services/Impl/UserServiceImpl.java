@@ -8,6 +8,7 @@ import com.system.lightnovel.pojo.FeedbackPojo;
 import com.system.lightnovel.pojo.UserPojo;
 import com.system.lightnovel.repo.*;
 import com.system.lightnovel.services.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,9 @@ public class UserServiceImpl implements UserService{
         return "created";
     }
 
+    public List<User> fetchAllUser() {
+        return this.userRepo.findAll();
+    }
 
     @Override
     public List<User> fetchAll() {
@@ -44,6 +48,22 @@ public class UserServiceImpl implements UserService{
         megaList.addAll(listMapping(userRepo.allUsers("Approved")));
         return megaList;
     }
+
+
+
+    @Override
+    public String update(UserPojo userPojo) {
+        User user = userRepo.findById(userPojo.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        user.setEmail(userPojo.getEmail());
+        user.setFullname(userPojo.getFullname());
+        user.setUsername(userPojo.getUsername());
+        user.setPassword(PasswordEncoderUtil.getInstance().encode(userPojo.getPassword()));
+        userRepo.save(user);
+        return "updated";
+    }
+
+
 
     public List<User> listMapping(List<User> list){
         Stream<User> allUsersWithImage=list.stream().map(user ->

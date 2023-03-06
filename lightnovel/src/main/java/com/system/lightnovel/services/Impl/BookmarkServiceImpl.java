@@ -131,7 +131,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     public String getImageBase64(String fileName) {
         if (fileName!=null) {
-            String filePath = System.getProperty("user.dir")+"/images/bikes/";
+            String filePath = System.getProperty("user.dir")+"/images/novels/";
             File file = new File(filePath + fileName);
             byte[] bytes;
             try {

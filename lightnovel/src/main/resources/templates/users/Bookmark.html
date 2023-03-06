@@ -19,13 +19,13 @@
 
         <div class="bookmark-list" >
             <div class="card" th:each="mark :${bookmarks}">
-                <span class="close-btn">&times;</span>
+                <a class="close-btn" th:href="@{~/deleteBookmark/}+${mark.id}">&times;</a>
 <!--                <img src="https://api.mtlnation.com/media/novel_covers/52790802b88e457cbbb87616762e6148.jpg" alt="Book cover">-->
                 <div class="card-info">
-                    <a class="card-title" th:href="@{~/novelSitePage}+${mark.n_id}" th:text="${mark.title}"></a>
+                    <a class="card-title" th:href="@{~/novelSitePage/}+${mark.id}" th:text="${mark.title}"></a>
                     <p class="card-description" th:text="${mark.description}"></p>
-                    <div class="card-meta" th:text="${mark.status}" > </div>
-                    <div class="card-rating" th:text="${mark.rating}">rating </div>
+                    status: <div class="card-meta" th:text="${mark.status}" > </div>
+                    rating:  <div class="card-rating" th:text="${mark.rating}"></div>
                 </div>
             </div>
 

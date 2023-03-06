@@ -12,6 +12,9 @@ public interface UserService {
 
     //Retrieve ----------------------------------------------------
     List<User> fetchAll();
+
+    String update(UserPojo userPojo);
+
     User fetchById(Integer id);
 
     UserPojo findByEmail(String email);
@@ -32,4 +35,6 @@ public interface UserService {
 
 
     void deleteUser(Integer id);
+
+    List<User> fetchAllUser();
 }

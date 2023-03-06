@@ -43,7 +43,7 @@ public class AdminController {
 
     @GetMapping("")
     public String getAdminDashboard(){
-        return "redirect:/novelList";
+        return "redirect:/admin/novelList";
     }
 
     @GetMapping("/novelList")
@@ -51,6 +51,13 @@ public class AdminController {
         List<Novel> novels = novelService.fetchAll();
         model.addAttribute("novel", novels);
         return "admin/adminBookList";
+    }
+
+    @GetMapping("/admin/edit")
+    public String editBookForm(@PathVariable("id") Integer id, Model model, NovelPojo novelPojo) {
+        novelService.update(novelPojo);
+//        model.addAttribute("book", novel);
+        return "redirect:/novelForm";
     }
 
     @GetMapping("/deletenovel/{id}")
@@ -69,7 +76,7 @@ public class AdminController {
     @PostMapping("/save")
     public String saveNovel(@Valid NovelPojo novelpojo, @RequestParam("image") MultipartFile image) throws IOException {
         novelService.save(novelpojo);
-        return "redirect:/novelList";
+        return "redirect:/admin/novelList";
     }
 //     ----------------------------------------
 //    CommentsSection or Feedback
@@ -94,14 +101,14 @@ public class AdminController {
 //    }
 
 //-------------------------------------------------------------
-//    User or Cusromer
+//    User or Customer
 //-------------------------------------------------------------
 
 
 
     @GetMapping("/userList")
     public String getUserLit(Model model){
-        List<User> users = userService.fetchAll();
+        List<User> users = userService.fetchAllUser();
         model.addAttribute("user", users);
         return "admin/CustomerList";
     }
@@ -110,6 +117,6 @@ public class AdminController {
     @GetMapping("/deleteUser/{id}")
     public String deleteCustomer(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
-        return "redirect:/admin/CustomerList";
+        return "redirect:/admin/userList";
     }
 }

@@ -21,6 +21,14 @@
 <header th:replace="fragment/adminHeader.html :: adminHeader" style="display: flex"></header>
 
 <main class="admin_main" style="display: flex">
+  <style>
+    body{
+      height: 100vh;
+    }
+    main{
+      height: 100%;
+    }
+  </style>
   <div class="admin__sidebar">
     <div th:replace="fragment/adminNav_frag.html :: adminNav"></div>
   </div>
